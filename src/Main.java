@@ -19,7 +19,9 @@ public class Main{
         lib2.addBook(c);
         lib2.addBook(d);
 
-//        lib1.borrowBook("Kayi I");
+        lib1.borrowBook("Kayi I");
+        lib1.borrowBook("Kayi I");
+        lib2.borrowBook("Kayi I");
         lib1.printAvailableBooks();
 //
 //        System.out.println("Number of libraries: " + lib1.getNumberOfLibraries() + "\n");

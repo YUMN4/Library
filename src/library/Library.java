@@ -75,22 +75,20 @@ public class Library {
 
         // TODO: if it is available, borrow the book
         Book found = searchBookByTitle(title);
-        found.toString();
 
         for(Book b : this.books){
-            if(title == b.getTitle()){
-                System.out.println("This book is available");
-            }
-            else if(b.isAvailable()) {
-                borrowBook(title);
+            if(title == b.getTitle() && b.isAvailable()){
+                System.out.println("The book: " + b.getTitle() + " has been borrowed successfully.");
                 b.setAvailable(false);
+                return;
             }
-            else{
-                System.out.println("This book is not available");
+            else if(title == b.getTitle() && !b.isAvailable()) {
+                System.out.println("The book: " + b.getTitle() + ", is already borrowed.");
+                return;
             }
-
         }
 
+        System.out.println("The book is not available in the library");
     }
 
     public void returnBook(String title) {
