@@ -19,14 +19,17 @@ public class Main{
         lib2.addBook(c);
         lib2.addBook(d);
 
-        System.out.println("Number of libraries: " + lib1.getNumberOfLibraries() + "\n");
-        System.out.println("Number of libraries: " + lib2.getNumberOfLibraries() + "\n");
-        System.out.println(lib1.searchBookByTitle("Kayi I").toString());
+//        lib1.borrowBook("Kayi I");
         lib1.printAvailableBooks();
-        lib2.printAvailableBooks();
-        lib1.borrowBook("Kayi X");
-        lib2.borrowBook("Namaz Kitabi");
-        lib1.returnBook("Kayi X");
+//
+//        System.out.println("Number of libraries: " + lib1.getNumberOfLibraries() + "\n");
+//        System.out.println("Number of libraries: " + lib2.getNumberOfLibraries() + "\n");
+//        System.out.println(lib1.searchBookByTitle("Kayi I").toString());
+//        lib1.printAvailableBooks();
+//        lib2.printAvailableBooks();
+//        lib1.borrowBook("Kayi X");
+//        lib2.borrowBook("Namaz Kitabi");
+//        lib1.returnBook("Kayi X");
 
     }
 }

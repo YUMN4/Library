@@ -13,7 +13,7 @@ public class Library {
 
     // TODO: create the constructor
     public Library(String name, String address){
-
+        this.books = new ArrayList<>();
     }
 
     public void addBook(Book b) {
@@ -44,7 +44,7 @@ public class Library {
 
         for(Book b : this.books){
             if(b.isAvailable()){
-                System.out.println();
+                System.out.println(b + "\n");
             }
         }
     }
