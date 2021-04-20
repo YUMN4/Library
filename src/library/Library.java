@@ -104,18 +104,23 @@ public class Library {
         found.toString();
 
         for(Book b : this.books){
-            if(title == b.getTitle()){
-                System.out.println("This book is available");
+            if(title == b.getTitle() && !b.isAvailable()) {
+                System.out.println("The book: " + b.getTitle() + ", is not found");
+                return;
             }
-            else{
-                System.out.println("This book is not available");
+            else if(title == b.getTitle() && b.isAvailable()){
+                System.out.println("The book: " + b.getTitle() + ", is already returned");
+                b.setAvailable(true);
+                return;
+             }
+
+
             }
-            returnBook(title);
-            b.setAvailable(true);
+
+
         }
 
 
-    }
 
     public String getName() {
         return name;
