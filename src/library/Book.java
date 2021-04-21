@@ -2,11 +2,12 @@ package library;
 
 import java.util.ArrayList;
 
-public class Book{
+public class Book {
 
     private String title;
     private String author;
     private boolean available;
+
 
     public Book(String title, String author) {
         this.title = title;
@@ -43,7 +44,7 @@ public class Book{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Title: " + this.title + "\nAuthor: " + this.author;
     }
 

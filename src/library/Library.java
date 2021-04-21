@@ -1,5 +1,7 @@
 package library;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 
 public class Library {
@@ -7,13 +9,12 @@ public class Library {
     private String name;
     private String address;
     private ArrayList<Book> books;
-    static private int numberOfLibraries;
-
-
+    static private int numberOfLibraries = 0;
 
     // TODO: create the constructor
-    public Library(String name, String address){
+    public Library(String name, String address) {
         this.books = new ArrayList<>();
+        numberOfLibraries++;
     }
 
     public void addBook(Book b) {
@@ -21,19 +22,20 @@ public class Library {
     }
 
 
-
     // TODO: implement the setter method for static variable numberOfLibraries
     // TODO: implement the getter method for static variable numberOfLibraries
 
-    public static int getNumberOfLibraries(){
+
+    public static int getNumberOfLibraries() {
         return numberOfLibraries;
     }
-    public int setNumberOfLibraries(){
+
+    public int setNumberOfLibraries(int numberOfLibraries) {
         return this.numberOfLibraries = numberOfLibraries;
     }
 
     public void printAllBooks() {
-        for(Book b: books) {
+        for (Book b : books) {
             System.out.println(b);
         }
     }
@@ -42,8 +44,8 @@ public class Library {
 
         // TODO: loop through the book list and print books that are available
 
-        for(Book b : this.books){
-            if(b.isAvailable()){
+        for (Book b : this.books) {
+            if (b.isAvailable()) {
                 System.out.println(b + "\n");
             }
         }
@@ -55,13 +57,12 @@ public class Library {
         // TODO: loop through the book list and return the book if title matches
 
         // TODO: return null if book is not found
+        for (Book b : books) {
 
-        for(Book b : this.books){
-            if(title == b.getTitle()) {
+            if (title == b.getTitle())
                 return b;
-            }
-        }
 
+        }
         return null;
     }
 
@@ -76,19 +77,20 @@ public class Library {
         // TODO: if it is available, borrow the book
         Book found = searchBookByTitle(title);
 
-        for(Book b : this.books){
-            if(title == b.getTitle() && b.isAvailable()){
-                System.out.println("The book: " + b.getTitle() + " has been borrowed successfully.");
-                b.setAvailable(false);
-                return;
-            }
-            else if(title == b.getTitle() && !b.isAvailable()) {
-                System.out.println("The book: " + b.getTitle() + ", is already borrowed.");
-                return;
-            }
+        if(found == null) {
+            System.err.println("UNRECOGNIZED BOOK!");
+            return;
         }
 
-        System.out.println("The book is not available in the library");
+        if (title == found.getTitle() && found.isAvailable()) {
+            System.out.println("The book: " + found.getTitle() + " has been borrowed successfully.");
+            found.setAvailable(false);
+            return;
+        } else if (title == found.getTitle() && !found.isAvailable()) {
+            System.out.println("The book: " + found.getTitle() + ", is already borrowed.");
+            return;
+        }
+
     }
 
     public void returnBook(String title) {
@@ -101,25 +103,24 @@ public class Library {
 
         // TODO: otherwise, set book as available again
         Book found = searchBookByTitle(title);
-        found.toString();
 
-        for(Book b : this.books){
-            if(title == b.getTitle() && !b.isAvailable()) {
-                System.out.println("The book: " + b.getTitle() + ", is not found");
-                return;
-            }
-            else if(title == b.getTitle() && b.isAvailable()){
-                System.out.println("The book: " + b.getTitle() + ", is already returned");
-                b.setAvailable(true);
-                return;
-             }
-
-
-            }
-
-
+        if (found == null) {
+            System.err.println("UNRECOGNIZED BOOK!");
+            return;
         }
 
+
+        if (title == found.getTitle() && found.isAvailable()) {
+            System.out.println("The book: " + found.getTitle() + ", is not found");
+            return;
+        } else if (title == found.getTitle() && !found.isAvailable()) {
+            System.out.println("The book: " + found.getTitle() + ", is already returned");
+            found.setAvailable(true);
+            return;
+        }
+
+
+    }
 
 
     public String getName() {
@@ -146,12 +147,12 @@ public class Library {
         this.books = books;
     }
 
-    public String toString(){
+    public String toString() {
         return "Name: " + this.name + "\nAddress: " + this.address;
     }
 
 
-
 }
+
 
 
